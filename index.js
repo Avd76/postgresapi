@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const cors = require("cors")
+require("dotenv").config
 const pool = require("./database/pool")
 app.use(cors())
 app.use(express.json())
@@ -59,7 +60,7 @@ app.delete("/delete/:id", async (req, res)=>{
    }
 })
 
-
-app.listen(5000, ()=>{
-    console.log("Server is listening on port 5000.")
+const port = process.env.PORT || 5000
+app.listen(port, ()=>{
+    console.log(`Server is listening on port ${port}`)
 })
