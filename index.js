@@ -60,7 +60,7 @@ app.delete("/delete/:id", async (req, res)=>{
    }
 })
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 5002
 app.listen(port, ()=>{
-    console.log(`Server is listening on port ${port}`)
+    console.log(`Server is up and listening on port ${port}`)
 })
