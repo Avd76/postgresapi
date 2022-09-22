@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from 'react'
+import React,  {useEffect, useState} from 'react'
 import {useParams, useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
@@ -14,7 +14,7 @@ function EditTodo() {
      
       setTodo(response.data.description)
       
-      console.log(Todo)
+    
     }
     getTodo(id)
    }, [Todo, id])
@@ -23,21 +23,22 @@ function EditTodo() {
     e.preventDefault()
     
     let response = await axios.put(`http://localhost:5000/edit/${id}`, {description: Todo})
-    console.log(response.data)
-
+     console.log(response.data)
 
       navigate("/")
    }
   
- 
+   const onTodoChange = (e)=>{
+    setTodo(e.target.value)
+   }
    
 
     return (
     <>
-  <form onSubmit={(e) => {updateTodo(e, id)}}>
-      <input className="form-control" value={Todo} onChange={(e)=>{setTodo(e.target.value)}} />
-      <input type="submit" value={"Save"} className="btn btn-primary block"  />
-   </form>
+    
+      <input className="form-control" type="text" value={Todo} onChange={(e) => {onTodoChange(e)}} />
+      <input type="submit" value={"Save"} className="btn btn-primary btn-block"onClick={(e) => {updateTodo(e, id)}}  />
+   
     </>
       )
 }
