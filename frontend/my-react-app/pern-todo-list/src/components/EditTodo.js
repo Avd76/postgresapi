@@ -17,7 +17,7 @@ function EditTodo() {
     
     }
     getTodo(id)
-   }, [Todo, id])
+   }, [])
 
    const updateTodo = async (e, id) =>{
     e.preventDefault()

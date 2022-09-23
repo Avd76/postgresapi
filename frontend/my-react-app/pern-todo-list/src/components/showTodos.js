@@ -25,7 +25,7 @@ function ShowTodos () {
     
     useEffect(()=>{
       getTodos()
-    }, [])
+    }, [todos])
     
     
     
