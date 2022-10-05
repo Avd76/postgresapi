@@ -9,9 +9,14 @@ app.use(express.json())
 
 // get all todos
 app.get("/", async (req, res)=>{
-   const todos = await pool.query("SELECT * FROM todos")
+  try{
+    const todos = await pool.query("SELECT * FROM todos")
 
-   res.json(todos.rows)
+    res.json(todos.rows)
+  }catch(e){
+    res.status(401).send(e)
+  }
+   
 })
 
 // Create a todo
