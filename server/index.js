@@ -18,6 +18,7 @@ app.get("/", async (req, res)=>{
 app.post("/create", async (req, res)=>{
   try{
     const {description} = req.body;
+    
     const newTodo = await pool.query("INSERT INTO todos (description) VALUES ($1) RETURNING *", [description]);
     res.json(newTodo.rows[0]);
   }catch (e){
@@ -64,3 +65,5 @@ const port = process.env.PORT || 5000
 app.listen(port, ()=>{
     console.log(`Server is up and listening on port ${port}`)
 })
+
+module.exports = app
